@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import FormControl from '@material-ui/core/FormControl';
 import PessoaFisicaService from "../../service/PessoaFisicaService";
 import { ToastContainer, toast } from 'react-toastify';
@@ -31,10 +32,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-
-
-
 import Popup from "reactjs-popup";
+
+const UFs = [    	'RO','AC',	'AM',	'RR',	'PA', 	'AP',	'TO', 	'MA', 	'PI', 	'CE',  	'RN',   	'PB',    	'PE',    	'AL',    	'SE',    	'BA',    	'MG',    	'ES',    	'RJ',    	'SP',    	'PR',    	'SC',    	'RS',    	'MS',    	'MT',    	'GO',    	'DF'   	];
 
 class AddPessoaFisicaComponent extends Component{
 	
@@ -65,7 +65,7 @@ class AddPessoaFisicaComponent extends Component{
         	end_cep:'',
         	end_bairro:'',
         	end_cidade:'',
-        	end_uf:'',
+        	end_uf:'DF',
             
             version:	0,
             isOpenT: false,
@@ -136,13 +136,11 @@ class AddPessoaFisicaComponent extends Component{
     removeEndereco(item){
     	var i=0;
     	console.log("enderecos:"+this.state.enderecos +" item "+item);
-    	this.state.enderecos = this.state.enderecos.filter(value => item !== value)
-       	
+    	this.state.enderecos = this.state.enderecos.filter(value => item !== value);       	
     	this.forceUpdate();
     }
     
-    addTelefone(){
-    	
+    addTelefone(){	
     	this.setState({ isOpenT: false });
     	let fone ={nome:this.state.tmpTel_nome, telefone:this.state.tmpTel_telefone,tipo:this.state.tmpTel_tipo};
     	console.log(fone);
@@ -154,7 +152,6 @@ class AddPessoaFisicaComponent extends Component{
     	
     	this.forceUpdate();
     }
-
     
     removeTelefone(item){
     	var i=0;
@@ -164,14 +161,11 @@ class AddPessoaFisicaComponent extends Component{
     	this.forceUpdate();
     }
     
-    
     maskToDate(tDate){
     	if(tDate=='') return tDate;
     	var ds = tDate.split('/');
     	return ds[2]+"-"+ds[1]+"-"+ds[0]+"T00:00:00.0Z";
     }
-    
-    
     
     savePessoa(userId) {
     	//var data =  Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit',year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'});
@@ -188,6 +182,7 @@ class AddPessoaFisicaComponent extends Component{
 			enderecos:  		this.state.enderecos,
 			telefones:  		this.state.telefones
     	}
+    	
     	if(this.update){
     		PessoaFisicaService.editPessoa(pessoa)
 	           .then((response) => 
@@ -335,10 +330,26 @@ class AddPessoaFisicaComponent extends Component{
 	                  			
 	    	                    <TextField type="text" placeholder="Logradouro" fullWidth margin="normal" name="end_logradouro" value={this.state.end_logradouro}  onChange={this.handleChange.bind(this)} />
 	    	
-	    	                    <TextField type="text"   placeholder="CEP" fullWidth margin="normal" name="end_cep" value={this.state.end_cep} onChange={this.handleChange.bind(this)}  />" +
+	    	                    <TextField type="text"   placeholder="CEP" fullWidth margin="normal" name="end_cep" value={this.state.end_cep} onChange={this.handleChange.bind(this)}  />
 	                  			<TextField type="text"   placeholder="Bairro" fullWidth margin="normal" name="end_bairro" value={this.state.end_bairro} onChange={this.handleChange.bind(this)}  />
 	                  			<TextField type="text"   placeholder="Cidade" fullWidth margin="normal" name="end_cidade" value={this.state.end_cidade} onChange={this.handleChange.bind(this)}  />
-	                  			<TextField type="text"   placeholder="UF" fullWidth margin="normal" name="end_uf" value={this.state.end_uf} onChange={this.handleChange.bind(this)}  />
+	                  			
+	                  			<Autocomplete id="uf-update" style={{ width: 300 }} options={UFs} autoHighlight
+		                  	      renderOption={option => (
+		                  	        <React.Fragment>
+		                  	          {option}
+		                  	        </React.Fragment>
+		                  	      )}
+		                  	      renderInput={params => (
+		                  	    	<TextField {...params} type="text"   placeholder="UF" fullWidth margin="normal" name="end_uf" value={this.state.end_uf} onChange={this.handleChange.bind(this)}  
+		                  	    	inputProps={{
+		                  	            ...params.inputProps,
+		                  	            autoComplete: 'new-password', // disable autocomplete and autofill
+		                  	          }}
+		                  	    	/>	  
+		                  	      )}
+		                  	    />
+	                  			
 	                  			<Button variant="contained" color="primary" onClick={this.addEndereco}>Salvar</Button>
 	                  			</div>
 	                  		
@@ -399,8 +410,6 @@ class AddPessoaFisicaComponent extends Component{
                   </div>
                   
                   </form>
-            
-            
     </div>
         );
     }

@@ -47,6 +47,8 @@ class ListaPessoaFisicaComponent extends Component {
             });
     }
 
+    
+    
     deletePessoa(userId) {
     	PessoaFisicaService.deletePessoa(userId)
            .then(response => {
