@@ -1,5 +1,9 @@
 CRUD SprignBoot + React.js + Postgres
 
+imagen no dockerhub ninrrad/samaiait_docker.img
+
+(comando: "docker pull ninrrad/samaiait_docker.img" )
+
 O projeto deve ser importado pelo eclipse como um projeto Maven.
 
 Para o funcionamento é necessario apenas a existencia da databse crud_avaliacao no postgres, 
