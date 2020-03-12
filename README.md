@@ -1,5 +1,7 @@
 CRUD SprignBoot + React.js + Postgres
 
+O projeto deve ser importado pelo eclipse como um projeto Maven.
+
 Para o funcionamento é necessario apenas a existencia da databse crud_avaliacao no postgres, 
 que pode ser criado com os comandos DDL abaixo: 
 
