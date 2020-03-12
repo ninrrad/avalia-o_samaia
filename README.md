@@ -7,7 +7,7 @@ CREATE DATABASE crud_avaliacao;
 
 a conexão com o banco utiliza o usuario postgres com a senha 123, as configurações e podem ser alteradas no arquivo:
 
-src/main/resources/application.properties
+https://github.com/ninrrad/avalia-o_samaia/blob/master/AvaliacaoSamaiaIT/src/main/resources/application.properties
 
 Nao tiven tempo de implementar o swagger para documentar a api, mas como utilizo tambem o thymeleaf, o mesmo exibe
 uma descrição basica da API. 
