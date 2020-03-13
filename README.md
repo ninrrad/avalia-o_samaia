@@ -2,8 +2,9 @@ CRUD SprignBoot + React.js + Postgres
 
 imagen no dockerhub ninrrad/samaiait_docker.img 
 
-comando: "docker pull ninrrad/samaiait_docker.img"
-O serviço roda na porta 8080 (imagem já contem o banco criado).
+comando para baixar a imagem   : "docker pull ninrrad/samaiait_docker.img"
+comando para executar a imagem : "docker run  -p 8080:8080    ninrrad/samaiait_docker.img start"
+                           URL : http://localhost:8080/
 
 O projeto deve ser importado pelo eclipse como um projeto Maven.
 
