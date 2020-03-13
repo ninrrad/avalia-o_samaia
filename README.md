@@ -21,3 +21,4 @@ Nao tiven tempo de implementar o swagger para documentar a api, mas como utilizo
 uma descrição basica da API. 
 
 Qualquer duvida envie um email para davidvlad@gmail.com. 
+ 
