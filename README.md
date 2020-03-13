@@ -1,10 +1,14 @@
+<html>
+<body>  
+<h1>
 CRUD SprignBoot + React.js + Postgres
+<h1>
 
-imagen no dockerhub ninrrad/samaiait_docker.img 
+<a href="https://hub.docker.com/r/ninrrad/samaiait_docker.img">imagen no dockerhub ninrrad/samaiait_docker.img </a>
 
 comando para baixar a imagem   : "docker pull ninrrad/samaiait_docker.img"
-comando para executar a imagem : "docker run  -p 8080:8080    ninrrad/samaiait_docker.img start"
-                           URL : http://localhost:8080/
+comando para executar a imagem : "docker run  -p 8080:8080 -i -t -d ninrrad/samaiait_docker.img start"
+                           URL : <a href="http://localhost:8080/">localhost:8080</a>
 
 O projeto deve ser importado pelo eclipse como um projeto Maven.
 
@@ -21,4 +25,6 @@ Nao tiven tempo de implementar o swagger para documentar a api, mas como utilizo
 uma descrição basica da API. 
 
 Qualquer duvida envie um email para davidvlad@gmail.com. 
- 
+</body>   
+</html>
+
